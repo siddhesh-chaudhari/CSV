@@ -1,0 +1,1 @@
+2014-10-01 6:56:21 - PHP Notice:  unserialize(): Error at offset 0 of 6 bytes in C:\wamp\www\Jr1\system\library\cache.php on line 11

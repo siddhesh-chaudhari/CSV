@@ -1,0 +1,467 @@
+@import 'variables.scss';
+
+/******************************
+ SHOPPING CART
+*******************************/
+
+.cart-info {
+  .stock{
+    color: red;
+  }
+  .name{
+    max-width: 400px;
+    text-align: left;
+    a{
+      font-weight: bold;
+    }
+  }
+  .image{
+    text-align: center;
+    width: 60px;
+    img{
+      margin: 5px 0;
+      float: left;
+      margin-left: 10px;
+    }
+  }
+  .quantity{
+    min-width: 110px;
+  }
+  .price, .total{
+    font-weight: bold;
+  }
+  table{
+    overflow: hidden;
+  }
+  td {
+    padding: 5px 10px 5px 5px;
+    text-align: center;
+  }
+
+  thead td {
+    height: $j-min;
+    font-weight: bold;
+    border-bottom: none;
+    font-size: 13px;
+  }
+  tbody {
+    td{
+      border-bottom-style:solid;
+      border-bottom-width:1px;
+      border-bottom-color:$e4;
+    }
+    td.image{
+      padding-left: 0;
+    }
+    tr:last-of-type td{
+      border-bottom: none;
+    }
+  }
+}
+
+
+
+#content.sc-page{
+  .content{
+    p{
+      padding: 10px;
+      font-size: 13px;
+    }
+    table.radio {
+      .highlight td {
+        border-bottom: 1px solid $e4;
+      }
+      .highlight:last-of-type td{
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.cart-module > div {
+  display: none;
+
+  form{
+    padding-left: 10px;
+
+    input[type='text']{
+      max-width: 240px;
+      margin: 20px 0;
+    }
+  }
+  input[name='postcode'] {
+    width: 100px;
+    margin-left: 6px;
+    margin-top: 5px;
+  }
+}
+
+#shipping{
+  table{
+    padding: 10px 0;
+    width: 45%;
+
+    td:first-of-type{
+      font-weight: bold;
+    }
+  }
+  select{
+    width: 150px;
+  }
+  .button{
+    margin: 10px 0;
+  }
+}
+
+.cart-total {
+  overflow: auto;
+  padding: 8px;
+  table {
+    float: right;
+  }
+  td {
+    padding: 4px;
+    text-align: right;
+  }
+}
+
+label {
+  line-height: 1.5;
+  font-size: 13px;
+  position: relative;
+}
+
+#total .right {
+  font-size: 14px;
+  width: 87%;
+  font-weight: bold;
+}
+
+.quantity input[type='text'] {
+  width: $j-min;
+  text-align: center;
+}
+
+.action-area{
+  overflow: hidden;
+  h3{
+    padding: 10px 12px;
+  }
+}
+
+
+/******************************
+ CHECKOUT PAGE
+*******************************/
+
+.checkout {
+  margin-bottom: 20px;
+  overflow: hidden;
+  select{
+    margin:0;
+  }
+  div:last-of-type{
+    .checkout-heading{
+      border-bottom: none;
+    }
+  }
+}
+
+.checkout-heading {
+  border-bottom: 1px solid $dark;
+  font-size: 13px;
+  min-height: 35px;
+  padding: 10px;
+  clear: both;
+}
+
+.checkout-heading a {
+  float: right;
+  margin-top: 1px;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.checkout-content {
+  padding: 0 0 15px 0;
+  display: none;
+  position: relative;
+  &:after{
+    content: ".";
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+  }
+  p{
+    padding: 10px 0;
+  }
+
+  .left {
+    float: left;
+    width: 48%;
+  }
+
+  .right {
+    float: right;
+    width: 48%;
+  }
+
+  .left {
+    p:last-of-type{
+      min-height: 92px;
+    }
+  }
+
+  .buttons{
+    margin-bottom: 0;
+    clear: both;
+    .right{
+      width:100%;
+    }
+  }
+  textarea{
+    width: 100% !important;
+    margin-top: 15px;
+  }
+}
+
+#payment-address h2{
+  margin-bottom: 15px;
+}
+
+.checkout-product{
+  .total {
+    font-weight: bold;
+  }
+  td {
+    padding: 15px;
+  }
+  thead td {
+    font-weight: bold;
+    padding: 13px;
+  }
+  .name,
+  .model {
+    text-align: left;
+  }
+  .quantity,
+  .price,
+  .total {
+    text-align: right;
+  }
+  tbody td {
+    border-bottom: 1px solid $f4;
+  }
+  tfoot td {
+    text-align: right;
+    padding: 6px 15px;
+  }
+}
+
+.wait {
+  position: absolute;
+  padding-top: 12px;
+  right: -10px;
+  bottom: 30px;
+}
+
+.newsletter-page{
+  table.form{
+    padding-top: 0;
+  }
+}
+
+/******************************
+ RETURNS
+*******************************/
+
+.returns{
+  > h1 + p{
+    margin-bottom: 15px;
+  }
+  form{
+    h2, .content{
+      margin-bottom: 15px;
+    }
+  }
+  .left{
+    float: none;
+  }
+  .buttons .left{
+    float: left;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .return-product > div{
+    width: 100%;
+    display: block;
+    input{
+      margin: 3px 0;
+    }
+  }
+  .return-detail > div{
+    width: 100%;
+    display: block;
+  }
+  .return-reason{
+    margin-bottom: 20px;
+  }
+}
+
+/******************************
+ SITEMAP
+*******************************/
+
+.sitemap-info {
+  overflow: auto;
+  padding-bottom: 20px;
+  ul {
+    margin: 0;
+    padding: 0;
+    li{
+      list-style: none;
+      padding: 2px;
+      margin-bottom: 1px;
+      font-weight: bold;
+    }
+  }
+
+  > div{
+    float: left;
+    width: 50%;
+    padding-left: 7px;
+    > ul{
+      padding: 10px 0 5px 15px;
+    }
+    > ul > li {
+      ul {
+        margin-left: 7px;
+        > li {
+          a {
+            font-weight: normal;
+          }
+        }
+      }
+      > ul li:before{
+        font-size: 12px;
+      }
+    }
+  }
+
+  > div:first-of-type{
+    padding-left: 0;
+    padding-right: 10px;
+  }
+}
+
+
+/******************************
+BRANDS
+*******************************/
+
+.header-default-sticky, .header-slim-sticky{
+  .manufacturer-list a[id]:before {
+    content:"";
+    display:block;
+    height:120px;
+    margin-top:-120px;
+  }
+}
+
+.header-center-sticky{
+  .manufacturer-list a[id]:before {
+    content:"";
+    display:block;
+    height:150px;
+    margin-top:-150px;
+  }
+}
+
+.manufacturer-list:first-of-type{
+  margin-top: 10px;
+}
+
+.manufacturer-list {
+  overflow: auto;
+  ul {
+    float: left;
+    width: 25%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 10px;
+  }
+}
+
+.manufacturer-heading {
+  background: $gray;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px 8px;
+  margin-bottom: 6px;
+}
+
+.manufacturer-content {
+  padding: 8px;
+}
+
+.manufacturer-list ul {
+  float: left;
+  width: 25%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+
+/******************************
+ CONTACT PAGE
+*******************************/
+
+.contact-page {
+  h2{
+    margin-bottom: 15px;
+  }
+  .buttons{
+    margin-top: 15px;
+  }
+  .content{
+    b{
+      margin-bottom: 5px;
+      display: inline-block;
+    }
+  }
+}
+
+.contact-info {
+  overflow: auto;
+}
+
+.contact-info > div > div {
+  float: left;
+  width: 48%;
+  margin-bottom: 10px;
+}
+
+
+/******************************
+ SEARCH PAGE
+*******************************/
+
+#content.search-page{
+  .buttons + h2{
+    margin-bottom: 15px;
+  }
+  .content{
+    margin: 15px 0;
+    input[type="text"]{
+      width: 265px;
+    }
+    select{
+      margin: 10px;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+product_id,model,name,quantity,image,manufacturer_id,shipping,price,points,weight,weight_class_id,length,width,height,status,category_id,filter_id
+57,tshirt1,T1,100,data/men/tshirt/tshirt1.jpeg,0,1,100,0,0,1,0,0,0,1,59-60,
+58,tshirt2,T2,100,data/men/tshirt/tshirt2.jpeg,0,1,200,0,0,1,0,0,0,1,59-60,
+59,tshirt3,T3,100,data/men/tshirt/tshirt3.jpeg,0,1,300,0,0,1,0,0,0,1,59-60,
+60,tshirt4,T4,100,data/men/tshirt/tshirt4.jpeg,0,1,400,0,0,1,0,0,0,1,59-60,
+77,shirt5,T5,50,data/men/shirts/shirt1.jpeg,0,1,500,0,0,1,0,0,0,1,59-60,

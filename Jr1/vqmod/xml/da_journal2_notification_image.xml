@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>Journal2 Notification Image</id>
+	<version>1.5.x</version>
+	<vqmver required="true">2.4.0</vqmver>
+	<author>digital-atelier.com</author>
+	
+	<file path="catalog/controller/checkout/" name="cart.php">
+		<operation error="skip">
+			<search position="before"><![CDATA[$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));]]></search>
+			<add><![CDATA[
+			    $this->load->model('tool/image');
+                $json['image'] = $product_info['image'] ? $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_cart_width'), $this->config->get('config_image_cart_height')) : '';
+            ]]></add>
+		</operation>
+	</file>
+
+    <file path="catalog/controller/account/" name="wishlist.php">
+        <operation error="skip">
+            <search position="before"><![CDATA[$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('account/wishlist'));]]></search>
+            <add><![CDATA[
+                $this->load->model('tool/image');
+                $json['image'] = $product_info['image'] ? $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_cart_width'), $this->config->get('config_image_cart_height')) : '';
+            ]]></add>
+        </operation>
+        <operation error="skip">
+            <search position="before"><![CDATA[$json['success'] = sprintf($this->language->get('text_login'), $this->url->link('account/login', '', 'SSL'), $this->url->link('account/register', '', 'SSL'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('account/wishlist'));]]></search>
+            <add><![CDATA[
+                $this->load->model('tool/image');
+                $json['image'] = $product_info['image'] ? $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_cart_width'), $this->config->get('config_image_cart_height')) : '';
+            ]]></add>
+        </operation>
+    </file>
+
+    <file path="catalog/controller/product/" name="compare.php">
+        <operation error="skip">
+            <search position="before"><![CDATA[$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('product/compare'));]]></search>
+            <add><![CDATA[
+			    $this->load->model('tool/image');
+                $json['image'] = $product_info['image'] ? $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_cart_width'), $this->config->get('config_image_cart_height')) : '';
+            ]]></add>
+        </operation>
+    </file>
+
+</modification>
+

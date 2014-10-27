@@ -1,0 +1,2 @@
+model,name,quantity,image,manufacturer_id,shipping,price,points,weight,weight_class_id,length,width,height,status
+test11,test11,1000,data/men/shirts/shirt2.jpeg,0,1,1000,0,0,1,0,0,0,1

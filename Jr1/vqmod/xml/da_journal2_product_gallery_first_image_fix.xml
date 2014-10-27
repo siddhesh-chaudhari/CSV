@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>Journal2 Product Gallery Image Fix</id>
+	<version>1.5.x</version>
+	<vqmver required="true">2.4.0</vqmver>
+	<author>digital-atelier.com</author>
+	
+	<file path="catalog/controller/product/" name="product.php">
+		<operation error="log">
+			<search position="before"><![CDATA[$this->data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height'));]]></search>
+			<add><![CDATA[$this->data['popup_fixed'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height'));]]></add>
+		</operation>
+        <operation error="log">
+            <search position="before"><![CDATA[$this->data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_thumb_width'), $this->config->get('config_image_thumb_height'));]]></search>
+            <add><![CDATA[$this->data['thumb_fixed'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_additional_width'), $this->config->get('config_image_additional_height'));]]></add>
+        </operation>
+	</file>
+</modification>
+

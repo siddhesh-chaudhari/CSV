@@ -1,0 +1,151 @@
+<modification>
+
+	<id>Export Excel : Product </id>
+	<version>1.0</version>
+	<vqmver>2.3.2 +</vqmver>
+	<author>IRS</author>
+  
+<!-- Product Returns -->  
+    <!-- Controller --> 
+  
+    <file name="admin/controller/catalog/product.php">
+		
+    <operation>
+			<search position="before" offset="0"><![CDATA[$this->data['button_filter'] = $this->language->get('button_filter');]]></search>
+            <add><![CDATA[$this->data['button_export'] = $this->language->get('button_export');
+			$this->data['export'] = $this->url->link('catalog/product/export', 'token=' . $this->session->data['token'], 'SSL');]]></add>
+		</operation>    
+        	
+        	<operation>
+			<search position="before" offset="0"><![CDATA[public function index() { ]]></search>
+            <add><![CDATA[public function export() {
+			
+				$this->load->model('catalog/product');
+				
+				$returns= array();
+
+		$data = array();
+
+		$results = $this->model_catalog_product->getProducts($data);
+
+		foreach ($results as $result) {
+		
+			$special = false;
+
+			$product_specials = $this->model_catalog_product->getProductSpecials($result['product_id']);
+
+			foreach ($product_specials  as $product_special) {
+				if (($product_special['date_start'] == '0000-00-00' || $product_special['date_start'] < date('Y-m-d')) && ($product_special['date_end'] == '0000-00-00' || $product_special['date_end'] > date('Y-m-d'))) {
+					$special = $product_special['price'];
+
+					break;
+				}					
+			}
+
+			$products[] = array(
+				'product_id' => $result['product_id'],
+				'name'       => $result['name'],
+				'model'      => $result['model'],
+				'price'      => $result['price'],
+				'special'    => $special,
+				'quantity'   => $result['quantity'],
+				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled'))
+			);
+				}	
+						
+						$products_data = array();
+						
+						$products_column=array();
+						
+						$products_column = array('Product ID', 'Product Name', 'Model', 'Price', 'Special', 'Quantity', 'Status');
+							
+						$products_data[0]=   $products_column;   
+						
+						foreach($products as $products_row)
+						{
+							$products_data[]=   $products_row;            
+						}     
+						require_once(DIR_SYSTEM . 'library/excel_xml.php');
+						$xls = new Excel_XML('UTF-8', false, 'Product List');
+						
+						$xls->addArray($products_data);
+						
+						$xls->generateXML('product_list_'.date('Y-m-d _ H:i:s'));	
+
+					}]]></add>
+		</operation>
+	</file>
+<!-- View -->
+
+	<file name="admin/view/template/catalog/product_list.tpl">
+		<operation>
+			<search position="replace"><![CDATA[<a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a>]]></search>
+			<add><![CDATA[<a href="<?php echo $export; ?>" class="button"><?php echo $button_export; ?></a><a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a>]]></add>
+		</operation>
+	</file>
+	
+	
+<!-- Catalog -->  
+    <!-- Controller --> 
+  
+    <file name="admin/controller/catalog/category.php">
+		
+    <operation>
+			<search position="before" offset="0"><![CDATA[$this->data['button_insert'] = $this->language->get('button_insert');]]></search>
+            <add><![CDATA[$this->data['button_export'] = $this->language->get('button_export');
+			$this->data['export'] = $this->url->link('catalog/category/export', 'token=' . $this->session->data['token'], 'SSL');]]></add>
+		</operation>    
+        	
+        	<operation>
+			<search position="before" offset="0"><![CDATA[public function index() { ]]></search>
+            <add><![CDATA[public function export() {
+			
+				$this->load->model('catalog/category');
+				
+				$categories= array();
+				
+				$data =array();
+		
+				$results = $this->model_catalog_category->getCategories($data);
+
+				foreach ($results as $result) {
+		
+					$categories[] = array(
+						'category_id' => $result['category_id'],
+						'name'        => $result['name'],
+						'sort_order'  => $result['sort_order']
+					);
+				}	
+						
+						$categories_data = array();
+						
+						$categories_column=array();
+						
+						$categories_column = array('Category ID', 'Category Name', 'Sort Order');
+							
+						$categories_data[0]=   $categories_column;   
+						
+						foreach($categories as $categories_row)
+						{
+							$categories_data[]=   $categories_row;            
+						}     
+						require_once(DIR_SYSTEM . 'library/excel_xml.php');
+						$xls = new Excel_XML('UTF-8', false, 'Category List');
+						
+						$xls->addArray($categories_data);
+						
+						$xls->generateXML('category_list_'.date('Y-m-d _ H:i:s'));	
+
+					}]]></add>
+		</operation>
+	</file>
+<!-- View -->
+
+	<file name="admin/view/template/catalog/category_list.tpl">
+		<operation>
+			<search position="replace"><![CDATA[<a href="<?php echo $repair; ?>" class="button"><?php echo $button_repair; ?></a>]]></search>
+			<add><![CDATA[<a href="<?php echo $export; ?>" class="button"><?php echo $button_export; ?></a><a href="<?php echo $repair; ?>" class="button"><?php echo $button_repair; ?></a>]]></add>
+		</operation>
+	</file>
+	
+</modification>
